@@ -1,0 +1,23 @@
+{
+  "name": "dm.spamr",
+  "version": "1.0.1",
+  "description": "Spams the DMs of a user with bot accoutns",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nexons/dm-spamr.git"
+  },
+  "keywords": [
+    "spammer",
+    "discord"
+  ],
+  "author": "NathanDevJS / Nexon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nexons/dm-spamr/issues"
+  },
+  "homepage": "https://github.com/nexons/dm-spamr#readme"
+}
