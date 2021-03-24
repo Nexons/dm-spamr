@@ -1,14 +1,25 @@
 async function handleCommand(msg, client, Discord) {
-
+    const {log} = require('../constructors/consoleConstructor')
+    const config = require('../config.json')
     const args = msg.content.split(' ')
     const command = args.shift()
     if(command === `${client.prefix}massdm`) {
         const toMass = msg.mentions.members.first()
-        const message = args.join(' ')
+        args.shift()
+        let numToSpam = args.shift()
+        let message = args.join(' ')
+        if(numToSpam && !message) {
+            message = numToSpam
+            numToSpam = 1
+        }
+        if(isNaN(numToSpam)) return msg.reply(numToSpam)
+        if(isNaN(numToSpam) || numToSpam > 100 || numToSpam < 1) return msg.reply('You must give a value 1-100 on the amount of messages to send!')
         if(!toMass) return msg.reply('You must ping a valid user to massDM!')
+        if(!message) return msg.reply('You must provide text to spam')
+        msg.react('👌')
         let i = 0;
         let l = 0;
-        for(token in client.slaves) {
+        config.slaveTokens.forEach(token => {
             const slave = new Discord.Client()
             slave.login(token).catch(err => {
                 if(err) {
@@ -22,9 +33,13 @@ async function handleCommand(msg, client, Discord) {
                     if(l === 0) msg.reply('One or more of your tokens is not in this server, Check console.')
                     return log(`ACCOUNT NOT IN SERVER: ${slave.user.tag}`)
                 }
-                user.send(message)
+                function spam() {
+                    i++
+                    user.send(message)
+                    if(i < numToSpam) return spam()
+                } spam()
             })
-        }
+        })
 
     }
     /**

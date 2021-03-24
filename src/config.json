@@ -1,16 +1,18 @@
 {
     "mainToken": "TOKEN",
-    "prefix": "-",
+    "prefix": ".",
     "authorisedIDs": [
-        "UR ID",
-        "FRIENDS ID",
+        "FRIENDID",
+        "FRIENDID",
         "FRIENDID",
         "FRIENDID"
     ],
     "slaveTokens": [
-        "aBotToken",
-        "aBotToken",
-        "aBotToken",
-        "aBotToken"
+        "TOKEN",
+        "TOKEN",
+        "TOKEN",
+        "TOKEN",
+        "TOKEN",
+        "TOKEN"
     ]
 }
